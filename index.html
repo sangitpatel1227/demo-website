@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delayed Button</title>
+    <style>
+        /* This CSS rule hides the second button when the page first loads */
+        #secondButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Button Delay Example</h2>
+    <p>Click the first button. It will be disabled, and the second button will appear after 5 minutes.</p>
+
+    <button id="startButton">Click Me to Start Timer</button>
+
+    <button id="secondButton">I Have Appeared!</button>
+
+    <script>
+        // Get references to the two button elements
+        const startBtn = document.getElementById('startButton');
+        const secondBtn = document.getElementById('secondButton');
+
+        // Set the delay time (5 minutes in milliseconds)
+        // 5 minutes * 60 seconds/minute * 1000 milliseconds/second = 300,000
+        const delayInMilliseconds = 300000; 
+
+        // === For Testing ===
+        // Uncomment the line below (and comment the one above) to test with 3 seconds
+        // const delayInMilliseconds = 3000; 
+
+        // Add a 'click' event listener to the first button
+        startBtn.addEventListener('click', () => {
+            
+            // 1. Give the user feedback and prevent more clicks
+            startBtn.textContent = 'Waiting for 5 minutes...';
+            startBtn.disabled = true;
+
+            // 2. Start the timer (setTimeout)
+            setTimeout(() => {
+                // This code will run *after* the delay has passed
+                
+                // 3. Show the second button
+                secondBtn.style.display = 'block'; // 'block' makes it appear on its own line
+
+            }, delayInMilliseconds);
+        });
+    </script>
+
+</body>
+</html>
